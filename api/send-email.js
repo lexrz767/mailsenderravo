@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { to_email, template_name, template_html, amount, currency } = req.body;
+    const { to_email, template_name, template_html, amount, currency, wallet_address } = req.body;
 
     // Validate input
     if (!to_email || !template_html) {
