@@ -163,12 +163,12 @@
                                 id="sendBothBtn"
                                 class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-all disabled:bg-slate-400 disabled:cursor-not-allowed"
                             >
-                                <span id="btnTextBoth">📧📧 Send Both (PayPal)</span>
+                                <span id="btnTextBoth">📧📧 Send Both Emails</span>
                             </button>
                         </div>
                         <p class="text-xs text-slate-500 mt-2">
                             💡 <strong>Best method:</strong> Click "Copy Template HTML" then paste into Gmail/Outlook for full design!
-                            For PayPal: Use "Send Both" to send receiver + sender confirmation emails.
+                            Use "Send Both Emails" to send receiver + sender confirmation emails for any platform.
                         </p>
                         <div id="emailStatus" class="mt-3 hidden"></div>
                     </div>
@@ -1352,6 +1352,103 @@
             });
         }
 
+        // Function to generate sender version of any template
+        function getSenderTemplateHTML(templateKey, amount, currency, recipientName) {
+            const formattedAmount = formatAmount(amount, currency);
+            const now = new Date();
+            const currentDate = now.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            const currentTime = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            const currentYear = now.getFullYear();
+
+            // Get the receiver template HTML
+            let senderHTML = getTemplateHTML(templateKey, amount, currency);
+            
+            // Replace "received" language with "sent" language based on template
+            const replacements = {
+                'binance': [
+                    { from: 'Withdrawal Successful', to: 'Transfer Sent Successfully' },
+                    { from: "You've successfully withdrawn", to: `You've successfully sent` },
+                    { from: 'from your account', to: `to ${recipientName}` },
+                    { from: 'Withdrawal Address', to: 'Recipient Address' }
+                ],
+                'paypal': [
+                    { from: 'Paypal Inc. has sent you', to: `You transferred money to ${recipientName}` },
+                    { from: 'Your funds have been successfully delivered', to: 'Your transfer has been completed' }
+                ],
+                'skrill': [
+                    { from: 'incoming deposit to your Skrill account', to: `transfer from your Skrill account to ${recipientName}` },
+                    { from: 'Your incoming amount', to: 'Your transfer amount' },
+                    { from: 'receive your funds', to: 'complete the transfer' }
+                ],
+                'cashapp': [
+                    { from: 'sent you', to: `received from you by ${recipientName}` },
+                    { from: 'You received', to: 'You sent' }
+                ],
+                'venmo': [
+                    { from: 'paid you', to: `received payment from you by ${recipientName}` },
+                    { from: 'You received', to: 'You sent' }
+                ],
+                'coinbase': [
+                    { from: 'Deposit Confirmed', to: 'Transfer Sent' },
+                    { from: 'Your deposit of', to: `Your transfer of` },
+                    { from: 'has been successfully added', to: `has been successfully sent to ${recipientName}` }
+                ],
+                'zelle': [
+                    { from: 'sent you', to: `received from you by ${recipientName}` },
+                    { from: 'Money received', to: 'Money sent' }
+                ],
+                'wise': [
+                    { from: 'Money is in your account', to: `Money sent to ${recipientName}` },
+                    { from: 'received', to: 'sent' }
+                ],
+                'chime': [
+                    { from: 'Money deposited', to: 'Money sent' },
+                    { from: 'has been credited', to: `has been sent to ${recipientName}` }
+                ],
+                'trustwallet': [
+                    { from: 'Deposit Successful', to: 'Transfer Sent' },
+                    { from: 'successfully received', to: `successfully sent to ${recipientName}` }
+                ],
+                'bybit': [
+                    { from: 'Deposit Successful', to: 'Withdrawal Successful' },
+                    { from: 'deposited', to: `sent to ${recipientName}` }
+                ],
+                'metamask': [
+                    { from: 'Funds Received', to: 'Funds Sent' },
+                    { from: 'received in your wallet', to: `sent to ${recipientName}` }
+                ],
+                'okx': [
+                    { from: 'Deposit Completed', to: 'Withdrawal Completed' },
+                    { from: 'deposited', to: `sent to ${recipientName}` }
+                ],
+                'gcash': [
+                    { from: 'Money Received', to: 'Money Sent' },
+                    { from: 'sent you', to: `received from you by ${recipientName}` }
+                ]
+            };
+
+            // Apply replacements for the specific template
+            if (replacements[templateKey]) {
+                replacements[templateKey].forEach(replacement => {
+                    senderHTML = senderHTML.replace(new RegExp(replacement.from, 'g'), replacement.to);
+                });
+            }
+
+            // Additional universal replacements
+            senderHTML = senderHTML.replace(/You('ve)? (successfully )?received/gi, 'You sent');
+            senderHTML = senderHTML.replace(/has sent you/gi, `received from you by ${recipientName}`);
+            senderHTML = senderHTML.replace(/sent you/gi, `received from you by ${recipientName}`);
+            
+            return senderHTML;
+        }
+
         function sendBothEmails() {
             const recipientEmail = document.getElementById('recipientEmail').value;
             const senderEmail = document.getElementById('senderEmail').value;
@@ -1386,17 +1483,16 @@
             sendBothBtn.disabled = true;
             btnTextBoth.textContent = '📤 Sending both emails...';
 
-            // Get receiver template (PayPal)
-            const receiverHTML = getTemplateHTML('paypal', currentAmount, currentCurrency);
+            // Get receiver template (current selected template)
+            const receiverHTML = getTemplateHTML(currentTemplate, currentAmount, currentCurrency);
             
             // Get sender template with recipient name replaced
-            let senderHTML = getTemplateHTML('paypal_sender', currentAmount, currentCurrency);
-            senderHTML = senderHTML.replace('{RECIPIENT_NAME}', recipientName);
+            const senderHTML = getSenderTemplateHTML(currentTemplate, currentAmount, currentCurrency, recipientName);
 
             // Prepare email data for receiver
             const receiverEmailData = {
                 to_email: recipientEmail,
-                template_name: 'PayPal - Money Received',
+                template_name: `${templates[currentTemplate]} - Money Received`,
                 template_html: receiverHTML,
                 amount: formatAmount(currentAmount, currentCurrency),
                 currency: currentCurrency,
@@ -1406,7 +1502,7 @@
             // Prepare email data for sender
             const senderEmailData = {
                 to_email: senderEmail,
-                template_name: 'PayPal - Money Sent Confirmation',
+                template_name: `${templates[currentTemplate]} - Transfer Confirmation`,
                 template_html: senderHTML,
                 amount: formatAmount(currentAmount, currentCurrency),
                 currency: currentCurrency,
@@ -1447,7 +1543,7 @@
             })
             .finally(() => {
                 sendBothBtn.disabled = false;
-                btnTextBoth.textContent = '📧📧 Send Both (PayPal)';
+                btnTextBoth.textContent = '📧📧 Send Both Emails';
             });
         }
 
