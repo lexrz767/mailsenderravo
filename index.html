@@ -118,13 +118,35 @@
                         <label class="block text-sm font-medium text-slate-700 mb-2">
                             Send Template via Email
                         </label>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        
+                        <!-- Recipient Info -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
                             <input
                                 type="email"
                                 id="recipientEmail"
                                 class="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
                                 placeholder="Recipient email address"
                             />
+                            <input
+                                type="text"
+                                id="recipientName"
+                                class="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                                placeholder="Recipient name (for PayPal sender email)"
+                            />
+                        </div>
+                        
+                        <!-- Sender Email (PayPal only) -->
+                        <div class="mb-3">
+                            <input
+                                type="email"
+                                id="senderEmail"
+                                class="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                                placeholder="Sender email (for PayPal - will receive sender confirmation)"
+                            />
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <button
                                 id="copyTemplateBtn"
                                 class="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-all"
@@ -137,10 +159,16 @@
                             >
                                 <span id="btnText">📧 Send Email</span>
                             </button>
+                            <button
+                                id="sendBothBtn"
+                                class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-all disabled:bg-slate-400 disabled:cursor-not-allowed"
+                            >
+                                <span id="btnTextBoth">📧📧 Send Both (PayPal)</span>
+                            </button>
                         </div>
                         <p class="text-xs text-slate-500 mt-2">
                             💡 <strong>Best method:</strong> Click "Copy Template HTML" then paste into Gmail/Outlook for full design!
-                            Or deploy to Vercel for automatic sending (see setup guide).
+                            For PayPal: Use "Send Both" to send receiver + sender confirmation emails.
                         </p>
                         <div id="emailStatus" class="mt-3 hidden"></div>
                     </div>
@@ -469,6 +497,147 @@
                                 <!-- PayPal Logo -->
                                 <div style="text-align: left; margin-bottom: 30px;">
    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png" alt="PayPal" width="150" height="40" style="display: block; border: 0;" />                                </div>
+                                </div>
+                                
+                                <!-- Footer Links -->
+                                <div style="margin-bottom: 25px; border-top: 1px solid #cccccc; padding-top: 25px;">
+                                    <a href="#" style="color: #0070ba; text-decoration: none; font-size: 13px; margin-right: 15px;">Help & Contact</a>
+                                    <span style="color: #999; margin-right: 15px;">|</span>
+                                    <a href="#" style="color: #0070ba; text-decoration: none; font-size: 13px; margin-right: 15px;">Security</a>
+                                    <span style="color: #999; margin-right: 15px;">|</span>
+                                    <a href="#" style="color: #0070ba; text-decoration: none; font-size: 13px;">Apps</a>
+                                </div>
+                                
+                                <!-- Social Icons -->
+                                <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 30px;">
+                                    <tr>
+                                        <!-- Twitter -->
+                                        <td style="padding-right: 15px;">
+                                            <a href="#" style="display: block; width: 40px; height: 40px; background-color: #707070; border-radius: 50%; text-align: center; line-height: 40px; text-decoration: none;">
+                                                <span style="color: #ffffff; font-size: 22px; font-weight: 900; font-family: Arial Black, Arial, sans-serif;">𝕏</span>
+                                            </a>
+                                        </td>
+                                        <!-- Instagram -->
+                                        <td style="padding-right: 15px;">
+                                            <a href="#" style="display: block; width: 40px; height: 40px; background-color: #707070; border-radius: 50%; text-align: center; line-height: 40px; text-decoration: none;">
+                                                <span style="color: #ffffff; font-size: 18px; font-weight: 900; font-family: Arial Black, Arial, sans-serif;">IG</span>
+                                            </a>
+                                        </td>
+                                        <!-- Facebook -->
+                                        <td style="padding-right: 15px;">
+                                            <a href="#" style="display: block; width: 40px; height: 40px; background-color: #707070; border-radius: 50%; text-align: center; line-height: 40px; text-decoration: none;">
+                                                <span style="color: #ffffff; font-size: 26px; font-weight: 900; font-family: Arial Black, Arial, sans-serif;">f</span>
+                                            </a>
+                                        </td>
+                                        <!-- LinkedIn -->
+                                        <td>
+                                            <a href="#" style="display: block; width: 40px; height: 40px; background-color: #707070; border-radius: 50%; text-align: center; line-height: 40px; text-decoration: none;">
+                                                <span style="color: #ffffff; font-size: 18px; font-weight: 900; font-family: Arial Black, Arial, sans-serif;">in</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                                <!-- Footer Text -->
+                                <div style="font-size: 11px; color: #666; line-height: 1.6; margin-bottom: 15px;">
+                                    <p style="margin: 0 0 10px 0;">PayPal is committed to preventing fraudulent emails. Emails from PayPal will always contain your full name. <a href="#" style="color: #0070ba; text-decoration: none;">Learn to identify phishing</a></p>
+                                    
+                                    <p style="margin: 0 0 10px 0;">Not sure why you received this email? <a href="#" style="color: #0070ba; text-decoration: none;">Learn more</a></p>
+                                    
+                                    <p style="margin: 0 0 15px 0;">Copyright © 1999-${currentYear} PayPal. All rights reserved.</p>
+                                    
+                                    <p style="margin: 0; font-size: 10px;">PayPal Pte. Ltd. ("3PL") has applied for a license under the Singapore Payment Services Act ("PS Act") with the Monetary Authority of Singapore. During this statutory transitional period, 3PL is operating under an exemption from holding a license and is allowed to continue to provide specific payment services.</p>
+                                    
+                                    <p style="margin: 10px 0 0 0; font-size: 10px; color: #999;">PayPal RT002231.en_US(en-AE)-1.0.0:696ae4ed727da</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                paypal_sender: `
+                    <div style="font-family: Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f5f5f5; color: #000000;">
+                        <!-- Greeting -->
+                        <div style="padding: 30px 30px 10px 30px; background-color: #f5f5f5;">
+                            <p style="font-size: 16px; color: #666666; margin: 0 0 5px 0;">Hello, ${currentWalletAddress || 'Harrelson Cooper Freeman'}</p>
+                        </div>
+                        
+                        <!-- PayPal Logo -->
+                        <div style="padding: 0 30px 20px 30px; background-color: #f5f5f5;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png" alt="PayPal" width="80" height="20" style="display: block; border: 0;" />
+                        </div>
+                        
+                        <!-- Main Message -->
+                        <div style="padding: 0 30px 25px 30px; background-color: #f5f5f5;">
+                            <h1 style="color: #003087; margin: 0 0 30px 0; font-size: 28px; font-weight: 600; line-height: 1.3;">
+                                You transferred money to {RECIPIENT_NAME}
+                            </h1>
+                            
+                            <p style="font-size: 16px; color: #000000; margin: 0 0 30px 0;">
+                                You used your Visa, x-5921 for this transfer. The money should be received by now.
+                            </p>
+                            
+                            <!-- Transaction Details Section -->
+                            <div style="background-color: #ffffff; border-radius: 8px; padding: 25px; margin-bottom: 30px;">
+                                <h2 style="color: #003087; margin: 0 0 20px 0; font-size: 18px; font-weight: 600;">
+                                    Transaction details
+                                </h2>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <p style="margin: 0 0 5px 0;">
+                                        <span style="color: #000000; font-size: 15px; font-weight: 600;">Transaction ID:</span>
+                                        <span style="color: #000000; font-size: 15px;"> 9NJ35286HA9214528</span>
+                                    </p>
+                                </div>
+                                
+                                <div style="margin-bottom: 20px;">
+                                    <p style="margin: 0 0 5px 0;">
+                                        <span style="color: #000000; font-size: 15px;">09 February 2026</span>
+                                    </p>
+                                </div>
+                                
+                                <!-- Divider -->
+                                <div style="border-bottom: 1px solid #e5e5e5; margin: 20px 0;"></div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <p style="margin: 0 0 5px 0;">
+                                        <span style="color: #000000; font-size: 15px; font-weight: 600;">Total amount transferred</span>
+                                    </p>
+                                    <p style="margin: 5px 0 0 0;">
+                                        <span style="color: #000000; font-size: 20px; font-weight: 700;">${formattedAmount}</span>
+                                    </p>
+                                </div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <p style="margin: 0 0 5px 0;">
+                                        <span style="color: #000000; font-size: 15px; font-weight: 600;">Fee</span>
+                                    </p>
+                                    <p style="margin: 5px 0 0 0;">
+                                        <span style="color: #000000; font-size: 15px;">450 USD</span>
+                                    </p>
+                                </div>
+                                
+                                <div style="margin-bottom: 0;">
+                                    <p style="margin: 0 0 5px 0;">
+                                        <span style="color: #000000; font-size: 15px; font-weight: 600;">Card</span>
+                                    </p>
+                                    <p style="margin: 5px 0 0 0;">
+                                        <span style="color: #000000; font-size: 15px;">Visa, x-5921</span>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Note -->
+                            <p style="font-size: 14px; color: #666666; line-height: 1.6; margin: 0 0 30px 0;">
+                                Please note it may take a little while for this transaction to appear in the Activity section of your account.
+                            </p>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <div style="position: relative; background-color: #f5f5f5; padding: 40px 30px 30px 30px;">
+                            <div style="background-color: #f5f5f5; padding: 0px;">
+                                <!-- PayPal Logo -->
+                                <div style="text-align: left; margin-bottom: 30px;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png" alt="PayPal" width="150" height="40" style="display: block; border: 0;" />
                                 </div>
                                 
                                 <!-- Footer Links -->
@@ -1183,6 +1352,105 @@
             });
         }
 
+        function sendBothEmails() {
+            const recipientEmail = document.getElementById('recipientEmail').value;
+            const senderEmail = document.getElementById('senderEmail').value;
+            const recipientName = document.getElementById('recipientName').value;
+            const sendBothBtn = document.getElementById('sendBothBtn');
+            const btnTextBoth = document.getElementById('btnTextBoth');
+
+            // Validation
+            if (!recipientEmail) {
+                showStatus('Please enter a recipient email address', true);
+                return;
+            }
+            if (!senderEmail) {
+                showStatus('Please enter a sender email address', true);
+                return;
+            }
+            if (!recipientName) {
+                showStatus('Please enter the recipient name', true);
+                return;
+            }
+
+            if (!recipientEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                showStatus('Please enter a valid recipient email address', true);
+                return;
+            }
+            if (!senderEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                showStatus('Please enter a valid sender email address', true);
+                return;
+            }
+
+            // Disable button and show loading
+            sendBothBtn.disabled = true;
+            btnTextBoth.textContent = '📤 Sending both emails...';
+
+            // Get receiver template (PayPal)
+            const receiverHTML = getTemplateHTML('paypal', currentAmount, currentCurrency);
+            
+            // Get sender template with recipient name replaced
+            let senderHTML = getTemplateHTML('paypal_sender', currentAmount, currentCurrency);
+            senderHTML = senderHTML.replace('{RECIPIENT_NAME}', recipientName);
+
+            // Prepare email data for receiver
+            const receiverEmailData = {
+                to_email: recipientEmail,
+                template_name: 'PayPal - Money Received',
+                template_html: receiverHTML,
+                amount: formatAmount(currentAmount, currentCurrency),
+                currency: currentCurrency,
+                wallet_address: currentWalletAddress
+            };
+
+            // Prepare email data for sender
+            const senderEmailData = {
+                to_email: senderEmail,
+                template_name: 'PayPal - Money Sent Confirmation',
+                template_html: senderHTML,
+                amount: formatAmount(currentAmount, currentCurrency),
+                currency: currentCurrency,
+                wallet_address: currentWalletAddress
+            };
+
+            // Send both emails
+            Promise.all([
+                fetch(VERCEL_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(receiverEmailData)
+                }),
+                fetch(VERCEL_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(senderEmailData)
+                })
+            ])
+            .then(async ([receiverResponse, senderResponse]) => {
+                if (!receiverResponse.ok || !senderResponse.ok) {
+                    const receiverData = await receiverResponse.json();
+                    const senderData = await senderResponse.json();
+                    throw new Error(receiverData.error || senderData.error || 'Failed to send emails');
+                }
+                return Promise.all([receiverResponse.json(), senderResponse.json()]);
+            })
+            .then(([receiverData, senderData]) => {
+                console.log('SUCCESS! Both emails sent:', receiverData, senderData);
+                showStatus(`✅ Both emails sent successfully!\n📧 Receiver: ${recipientEmail}\n📧 Sender: ${senderEmail}`);
+                document.getElementById('recipientEmail').value = '';
+                document.getElementById('senderEmail').value = '';
+                document.getElementById('recipientName').value = '';
+            })
+            .catch(error => {
+                console.error('FAILED...', error);
+                showStatus('❌ ' + error.message, true);
+            })
+            .finally(() => {
+                sendBothBtn.disabled = false;
+                btnTextBoth.textContent = '📧📧 Send Both (PayPal)';
+            });
+        }
+
         function sendEmail() {
             const recipientEmail = document.getElementById('recipientEmail').value;
             const sendBtn = document.getElementById('sendEmailBtn');
@@ -1264,6 +1532,7 @@
 
         document.getElementById('sendEmailBtn').addEventListener('click', sendEmail);
         document.getElementById('copyTemplateBtn').addEventListener('click', copyTemplateHTML);
+        document.getElementById('sendBothBtn').addEventListener('click', sendBothEmails);
 
         // Initialize
         createTemplateButtons();
